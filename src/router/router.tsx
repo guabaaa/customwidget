@@ -13,10 +13,10 @@ export const router = createBrowserRouter([
         path: "login",
         element: <Login />,
       },
-      {
-        path: "widget",
-        element: <Widget />,
-      },
+      // {
+      //   path: "widget",
+      //   element: <Widget isEditing={false} />,
+      // },
     ],
   },
 ]);

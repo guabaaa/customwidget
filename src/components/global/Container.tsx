@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import TopNavBar from "../navbar/TopNavBar";
 import LeftMenuNavBar from "../navbar/LeftMenuNavBar";
+import Widget from "../../page/widget/widget";
 
 const Container = () => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditButtonClick = () => {
+    setIsEditing(!isEditing);
+  };
+
   return (
     <div id="wrap">
       <div className="containers">
-        <LeftMenuNavBar />
+        <LeftMenuNavBar
+          onEditButtonClick={handleEditButtonClick}
+          isEditing={isEditing}
+        />
         <TopNavBar />
-        <Outlet />
+        <Widget isEditing={isEditing} />
       </div>
     </div>
   );

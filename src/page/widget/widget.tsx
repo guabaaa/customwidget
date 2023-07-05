@@ -1,64 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const WidgetEditor = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [widgetPosition, setWidgetPosition] = useState({ x: 0, y: 0 });
-  const [widgetSize, setWidgetSize] = useState({ width: 200, height: 200 });
-  const [gridPosition, setGridPosition] = useState({ x: 0, y: 0 });
+type WidgetProps = {
+  isEditing: boolean;
+};
 
-  const handleEditButtonClick = () => {
-    setIsEditing(true);
-  };
+const Widget = ({ isEditing }: WidgetProps) => {
+  const [gridSize, setGridSize] = useState({ width: 0, height: 0 });
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isEditing) return;
-    const newX = e.clientX;
-    const newY = e.clientY;
-    const gridX = Math.floor(newX / 10) * 10;
-    const gridY = Math.floor(newY / 10) * 10;
-    setWidgetPosition({ x: newX, y: newY });
-    setGridPosition({ x: gridX, y: gridY });
-  };
+  useEffect(() => {
+    const gridElement = gridRef.current;
 
-  const handleMouseResize = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isEditing) return;
-    const newWidth = e.clientX - widgetPosition.x;
-    const newHeight = e.clientY - widgetPosition.y;
-    setWidgetSize({ width: newWidth, height: newHeight });
-  };
+    if (gridElement) {
+      const cell = gridElement.querySelector(".grid-cell");
+
+      if (cell) {
+        const cellStyles = getComputedStyle(cell);
+
+        const cellWidth = parseFloat(cellStyles.width);
+        const cellHeight = parseFloat(cellStyles.height);
+
+        const gridWidth = gridElement.clientWidth;
+        const gridHeight = gridElement.clientHeight;
+
+        const numCols = Math.floor(gridWidth / cellWidth);
+        const numRows = Math.floor(gridHeight / cellHeight);
+
+        setGridSize({ width: cellWidth, height: cellHeight });
+
+        for (let row = 0; row < numRows; row++) {
+          for (let col = 0; col < numCols; col++) {
+            const cellLeft = col * cellWidth;
+            const cellTop = row * cellHeight;
+
+            console.log(
+              `Cell (${col}, ${row}): left=${cellLeft}px, top=${cellTop}px`
+            );
+          }
+        }
+      }
+    }
+  }, [isEditing]);
 
   return (
     <div className="content">
-      <div className="widget-wrap">
-        <button onClick={handleEditButtonClick} className="widget-edit-btn">
-          EDIT
-        </button>
-        <div
-          className={`widget${isEditing ? " editing" : ""}`}
-          style={{
-            left: `${widgetPosition.x}px`,
-            top: `${widgetPosition.y}px`,
-            width: `${widgetSize.width}px`,
-            height: `${widgetSize.height}px`,
-          }}
-          onMouseMove={handleMouseDrag}
-          onMouseUp={() => setIsEditing(false)}
-        >
-          {isEditing && (
-            <div
-              className="grid-overlay"
-              style={{
-                left: `${gridPosition.x}px`,
-                top: `${gridPosition.y}px`,
-              }}
-              onMouseMove={handleMouseResize}
-            />
-          )}
-          위젯
-        </div>
+      <div className={`widget-editor ${isEditing ? "editing" : ""}`}>
+        {isEditing && <div className="widget-overlay" />}
+        {isEditing && (
+          <div className="grid-overlay">
+            <div className="grid-container" ref={gridRef}>
+              {[...Array(100)].map((_, index) => (
+                <React.Fragment key={index}>
+                  {[...Array(100)].map((_, subIndex) => (
+                    <div key={subIndex} className="grid-cell" />
+                  ))}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default WidgetEditor;
+export default Widget;

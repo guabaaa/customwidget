@@ -187,6 +187,7 @@ textarea {
     display: flex;
     justify-content: space-between;
 }
+
 .content {
     padding: 10.5vh 0 0 12.5rem;
     flex: 1 1;
@@ -247,6 +248,56 @@ textarea {
     align-content: center;
     width: 12rem;
     border-right: 1px solid #c4c4c4;
+    text-align: center;
+}
+.left-nav-wrap .menu-1{
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer;
+}
+.left-nav-wrap .menu-1 span{
+    margin: 0 auto;
+}
+
+.left-nav-wrap .menu-2{
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer;
+}
+.left-nav-wrap .menu-2 span{
+    margin: 0 auto;
+}
+.left-nav-wrap .menu-3{
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer;
+}
+.left-nav-wrap .menu-3 span{
+    margin: 0 auto;
+}
+.left-nav-wrap .menu-4{
+    width: 80%;
+    height: 5%;
+    margin: 0 auto;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer;
+}
+.left-nav-wrap .menu-4 span{
+    margin: 0 auto;
 }
 
 .login-wrap{
@@ -280,14 +331,49 @@ textarea {
     background: none;
 }
 
-.widget-wrap {
+.widget-editor {
     width: 100%;
+    position: relative;
 }
 
-.widget-edit-btn {
-    width: 5rem;
-    height: 3rem;
-    border-radius: 4px;
-    background-color: #000;
-    margin: 10px;
+.widget-editor.editing{
+    margin: 0.5rem;
+}
+
+.widget-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: rgba(200, 200, 200, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+}
+
+.grid-cell {
+    border: 1px solid #666;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
 }
