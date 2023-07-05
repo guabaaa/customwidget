@@ -1,0 +1,293 @@
+@charset "utf-8";
+@import url('fonts.css');
+
+
+html,body,object,iframe,h1,h2,h3,h4,h5,p,blockquote,
+pre,
+a,
+abbr,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+fieldset,
+fo7m,
+label,
+legend,
+input,
+button,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+hgroup,
+details,
+menu,
+figure,
+figcaption {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    overflow: visible;
+    border: 0 none;
+    cursor: pointer;
+}
+
+button::-moz-focus-inner,
+input[type='button']::-moz-focus-inner,
+input[type='submit']::-moz-focus-inner,
+input[type='reset']::-moz-focus-inner {
+    padding: 0;
+    border: 0 none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    outline: 0;
+}
+
+body,
+input,
+select,
+textarea,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    background: none;
+}
+
+form {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+a,
+a:active,
+a:visited {
+    text-decoration: none !important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgb(113, 128, 150, 0.5);
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+
+body {
+    background: linear-gradient(45deg, #090d1b, #1c1e36, #0e1222, #090d1b);
+}
+
+button,
+select,
+input,
+textarea {
+    outline: none;
+}
+#wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.containers {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.content {
+    padding: 10.5vh 0 0 12.5rem;
+    flex: 1 1;
+    position: relative;
+    min-width: 0;
+    display: flex;
+}
+
+.top-nav-wrap{
+    z-index: 999;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    left: 12rem;
+    top: 0;
+    height: 10vh;
+    border-bottom: 1px solid #c4c4c4;
+    align-content: center;
+    line-height: 10vh;
+}
+.top-nav-wrap .top-nav-date{
+    color: #c4c4c4;
+    padding: 0 6vh 0 6vh;
+    width: 15%;
+    text-align: center;
+}
+.top-nav-wrap .top-nav-time{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 4.5rem;
+    text-align: center;
+    width: 15%;
+    padding: 0 5vh 0 5vh;
+}
+.top-nav-wrap .top-nav-weather{
+    color: #ffffff;
+    text-align: center;
+    width: 20%;
+    padding: 0 5vh 0 5vh;
+}
+.top-nav-wrap .top-nav-sel-wrap{
+    width: 35%;
+    padding: 0 5vh 0 5vh;
+}
+.top-nav-wrap .top-nav-login-wrap{
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    padding: 0 5vh 0 5vh;
+}
+.left-nav-wrap{
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-content: center;
+    width: 12rem;
+    border-right: 1px solid #c4c4c4;
+}
+
+.login-wrap{
+    display: flex;
+    width: 65vh;
+    height: 70vh;
+    text-align: center;
+    justify-content: center;
+
+}
+.login-wrap .login-id-wrap{
+    padding: 1rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.login-wrap .login-pw-wrap{
+    width: 20rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.login-wrap input {
+    border-bottom: 1px solid #c4c4c4;
+    margin-left: 1rem;
+    outline: none;
+    background: none;
+}
+
+.widget-wrap {
+    width: 100%;
+}
+
+.widget-edit-btn {
+    width: 5rem;
+    height: 3rem;
+    border-radius: 4px;
+    background-color: #000;
+    margin: 10px;
+}
