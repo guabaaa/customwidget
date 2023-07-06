@@ -1,46 +1,24 @@
 import React, { useState } from "react";
 import TopNavBar from "../navbar/TopNavBar";
 import LeftMenuNavBar from "../navbar/LeftMenuNavBar";
-import Widget from "../../page/widget/widget";
+import Widget from "../../page/widget/Widget";
 
 const Container = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [widgets, setWidgets] = useState<JSX.Element[]>([]);
+  const [isEditWidget, setIsEditWidget] = useState<any>(null);
 
   const handleEditButtonClick = () => {
     setIsEditing(!isEditing);
   };
 
-  // 위젯 추가
   const handleAddWidget = () => {
-    // 위젯상태는 저장해놓기
     const newWidget = <div className="widget-wrap">나? 위젯!</div>;
     setWidgets((prevWidgets) => [...prevWidgets, newWidget]);
   };
 
-  // size 변경
-  const handleWidgetSizeChange = (width: number, height: number) => {
-    const updatedWidgets = widgets.map((widget) => {
-      // 각 위젯의 사이즈 변경
-      return widget;
-    });
-    setWidgets(updatedWidgets);
-  };
-
-  // 위젯 위치 변경
-  const handleWidgetPositionChange = (col: number, row: number) => {
-    const updatedWidgets = widgets.map((widget) => {
-      // 각 위젯의 위치 변경
-      return widget;
-    });
-    setWidgets(updatedWidgets);
-  };
-
   const handleEditWidget = () => {
-    return {
-      handleWidgetSizeChange,
-      handleWidgetPositionChange,
-    };
+    setIsEditWidget("");
   };
 
   return (
@@ -51,9 +29,14 @@ const Container = () => {
           onAddWidget={handleAddWidget}
           isEditing={isEditing}
           onEditWidget={handleEditWidget}
+          isEditWidget={isEditWidget}
         />
         <TopNavBar />
-        <Widget isEditing={isEditing} widgets={widgets} />
+        <Widget
+          isEditing={isEditing}
+          isEditWidget={isEditWidget}
+          widgets={widgets}
+        />
       </div>
     </div>
   );

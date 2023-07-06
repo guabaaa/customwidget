@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Container from "../components/global/Container";
 import Login from "../page/user/login";
-import Widget from "../page/widget/widget";
+import Widget from "../page/widget/Widget";
 
 export const router = createBrowserRouter([
   {

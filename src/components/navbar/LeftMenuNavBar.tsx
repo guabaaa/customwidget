@@ -18,33 +18,27 @@ type LeftMenuNavBarProps = {
     handleWidgetSizeChange: (width: number, height: number) => void,
     handleWidgetPositionChange: (col: number, row: number) => void
   ) => void;
+  isEditWidget: any;
 };
 
 const LeftMenuNavBar = ({
   isEditing,
-  onAddWidget,
   onEditButtonClick,
+  onAddWidget,
   onEditWidget,
+  isEditWidget,
 }: LeftMenuNavBarProps) => {
-  const handleWidgetSizeChange = (width: number, height: number) => {
-    onEditWidget(
-      (width, height) => handleWidgetSizeChange(width, height),
-      handleWidgetPositionChange
-    );
-  };
-
-  const handleWidgetPositionChange = (col: number, row: number) => {
-    onEditWidget(handleWidgetSizeChange, (col, row) =>
-      handleWidgetPositionChange(col, row)
-    );
-  };
   const handleWidgetClick = () => {
     if (isEditing) {
       onAddWidget();
     } else {
-      onEditWidget(handleWidgetSizeChange, handleWidgetPositionChange);
+      onEditWidget(
+        isEditWidget.handleWidgetSizeChange,
+        isEditWidget.handleWidgetPositionChange
+      );
     }
   };
+
   return (
     <div className="left-nav-wrap">
       <button className="menu-1" onClick={handleWidgetClick}>
